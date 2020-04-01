@@ -17,11 +17,14 @@ class CoffeeMap extends Component {
                     style={{ height: "480px", width: "100%", opacity: "0.9" }}
                     zoom={8}
                     maxZoom={20}
-                    center={[37.5970132,-122.5310677]}
+                    center={[37.5970132, -122.5310677]}
                     attributionControl={false}>
                     <TileLayer url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.png"
                         attribution="Map by <a href='http://stamen.com' target='_blank'>Stamen Design</a> | &copy; <a href='https://www.openstreetmap.org/copyright' target='_blank'>OpenStreetMap</a> contributors"
                     />
+                    {/* <TileLayer url="https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png"
+                        attribution="Map by <a href='https://wikimediafoundation.org/wiki/Maps_Terms_of_Use' target='_blank'>Wikimedia</a> | &copy; <a href='https://www.openstreetmap.org/copyright' target='_blank'>OpenStreetMap</a> contributors"
+                    /> */}
 
                     <AttributionControl position="bottomright" prefix={false} />
 
