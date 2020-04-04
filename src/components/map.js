@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Map, CircleMarker, TileLayer, Tooltip, AttributionControl } from "react-leaflet";
+import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import "leaflet/dist/leaflet.css";
 import data from "./mapData"
 import Papa from 'papaparse';
@@ -13,6 +14,18 @@ Papa.parse(myDataset, {
         console.log(results);
     }
 });
+
+// Provider for leaflet-geosearch plugin
+const provider = new OpenStreetMapProvider();
+
+// Convert "City, State" or "ZIP" to lat/long coordinates using leaflet-geosearch plugin 
+provider
+    .search({ query: 'Los Angeles, CA' })
+    .then(function (result) {
+        // Result should look like this for Los Angeles:
+        // 34.0536909,-118.2427666
+        console.log(result[0].y + ',' + result[0].x);
+    });
 
 /* Adapted from https://github.com/afzalsayed96/bubbles-map by Afzal Sayed  */
 /* Map tiles proudly from Stamen Design in San Francisco https://stamen.com/maps/ */
