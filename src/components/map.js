@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { Map, CircleMarker, TileLayer, Tooltip, AttributionControl } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
- import data from "./mapData"
+import data from "./mapData"
 import Papa from 'papaparse';
 
-    import myDataset from '../coffee_roasters_list.csv';
+import myDataset from '../coffee_roasters_list.csv';
 Papa.parse(myDataset, {
-  download: true,
-  header: true,
-  delimiter: ',',
-  complete: function(results) {
-    console.log(results);
-  }
+    download: true,
+    header: true,
+    delimiter: ',',
+    complete: function (results) {
+        console.log(results);
+    }
 });
 
 /* Adapted from https://github.com/afzalsayed96/bubbles-map by Afzal Sayed  */
