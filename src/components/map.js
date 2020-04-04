@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Map, CircleMarker, TileLayer, Tooltip, AttributionControl } from "react-leaflet";
-import { OpenStreetMapProvider } from 'leaflet-geosearch';
+import { BingProvider } from 'leaflet-geosearch';
 import "leaflet/dist/leaflet.css";
 import data from "./mapData"
 import Papa from 'papaparse';
@@ -16,7 +16,11 @@ Papa.parse(myDataset, {
 });
 
 // Provider for leaflet-geosearch plugin
-const provider = new OpenStreetMapProvider();
+const provider = new BingProvider({
+    params: {
+        key: process.env.REACT_APP_BING_MAPS_API_KEY
+    },
+});
 
 // Convert "City, State" or "ZIP" to lat/long coordinates using leaflet-geosearch plugin 
 provider
