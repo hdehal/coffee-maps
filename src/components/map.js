@@ -2,18 +2,9 @@ import React, { Component } from 'react';
 import { Map, CircleMarker, TileLayer, Tooltip, AttributionControl } from "react-leaflet";
 import { BingProvider } from 'leaflet-geosearch';
 import "leaflet/dist/leaflet.css";
-import data from "./mapData"
+// import data from "./mapData"
 import Papa from 'papaparse';
-
 import myDataset from '../coffee_roasters_list.csv';
-Papa.parse(myDataset, {
-    download: true,
-    header: true,
-    delimiter: ',',
-    complete: function (results) {
-        console.log(results);
-    }
-});
 
 // Provider for leaflet-geosearch plugin
 const provider = new BingProvider({
@@ -24,12 +15,37 @@ const provider = new BingProvider({
 
 // Convert "City, State" or "ZIP" to lat/long coordinates using leaflet-geosearch plugin 
 provider
-    .search({ query: 'Los Angeles, CA' })
+    .search({ query: 'Los Angeles' })
     .then(function (result) {
         // Result should look like this for Los Angeles:
         // 34.0536909,-118.2427666
         console.log(result[0].y + ',' + result[0].x);
     });
+
+Papa.parse(myDataset, {
+    download: true,
+    header: true,
+    delimiter: ',',
+    complete: function (results) {
+        for (let index in results.data) {
+            let city = results.data[index].city;
+            console.log(city);
+            try {
+                let result = provider.search({ query: city });
+                if (result && result.length > 0) {
+                    console.log(result[0].y + ',' + result[0].x);
+                    // results.data[index].coordinates = [result[0].y, result[0].x];
+                }
+            }
+            catch (e) {
+                console.log(e);
+            }
+        }
+
+        console.log(results.data);
+        console.log(results.data[0].city);
+    }
+});
 
 /* Adapted from https://github.com/afzalsayed96/bubbles-map by Afzal Sayed  */
 /* Map tiles proudly from Stamen Design in San Francisco https://stamen.com/maps/ */
@@ -56,22 +72,7 @@ class CoffeeMap extends Component {
 
                     <AttributionControl position="bottomright" prefix={false} />
 
-                    {data.city.map((city, k) => {
-                        return (
-                            <CircleMarker
-                                key={k}
-                                center={[city["coordinates"][1], city["coordinates"][0]]}
-                                radius={20 * Math.log(city["population"] / 10000000)}
-                                fillOpacity={0.5}
-                                stroke={false}>
-                                <Tooltip direction="right" offset={[-8, -2]} opacity={1}>
-                                    {/* Fix Unexpected string concatenation of literals  no-useless-concat error */}
-                                    {/* <span>{city["name"] + ": " + "Population" + " " + city["population"]}</span> */}
-                                    <span>`${city["name"] | "Population" | city["population"]}`</span>
-                                </Tooltip>
-                            </CircleMarker>)
-                    })
-                    }
+
                 </Map>
             </div>
         );
