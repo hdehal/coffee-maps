@@ -19,7 +19,7 @@ provider
     .then(function (result) {
         // Result should look like this for Los Angeles:
         // 34.0536909,-118.2427666
-        console.log(result[0].y + ',' + result[0].x);
+        // console.log(result[0].y + ',' + result[0].x);
     });
 
 Papa.parse(myDataset, {
@@ -31,11 +31,8 @@ Papa.parse(myDataset, {
             let city = results.data[index].city;
             console.log(city);
             try {
-                let result = provider.search({ query: city });
-                if (result && result.length > 0) {
-                    console.log(result[0].y + ',' + result[0].x);
-                    // results.data[index].coordinates = [result[0].y, result[0].x];
-                }
+                let result = provider.search({ query: city + ', CA, United States' })
+                    .then(result => console.log(result[0].y + ',' + result[0].x))
             }
             catch (e) {
                 console.log(e);
@@ -43,7 +40,7 @@ Papa.parse(myDataset, {
         }
 
         console.log(results.data);
-        console.log(results.data[0].city);
+        // console.log(results.data[0].city);
     }
 });
 
