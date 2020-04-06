@@ -13,29 +13,40 @@ const provider = new BingProvider({
     },
 });
 
-Papa.parse(myDataset, {
-    download: true,
-    header: true,
-    delimiter: ',',
-    complete: async function (results) {
-        for (let index in results.data) {
-            let city = results.data[index].city;
-            console.log(city);
-            try {
-                let result = await provider.search({ query: city + ', CA, United States' })
-                    .then(result => results.data[index].coordinates = [result[0].y, result[0].x]);
-            }
-            catch (e) {
-                console.log(e);
-            }
-        }
-
-        console.log(results.data);
-
-    }
-});
-
 class CoffeeMap extends Component {
+
+    // Initial state
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            dataMaps: []
+        }
+    }
+
+    componentDidMount() {
+        Papa.parse(myDataset, {
+            download: true,
+            header: true,
+            delimiter: ',',
+            complete: async function (papaResult) {
+                for (let index in papaResult.data) {
+                    let city = papaResult.data[index].city;
+                    console.log(city);
+                    try {
+                        let providerResult = await provider.search({ query: city + ', CA, United States' })
+                            .then(providerResult => papaResult.data[index].coordinates = [providerResult[0].y, providerResult[0].x]);
+                    }
+                    catch (e) {
+                        console.log(e);
+                    }
+                }
+
+                console.log(papaResult.data);
+            }
+        });
+    }
+
     render() {
         return (
             <div>
