@@ -54,7 +54,7 @@ class CoffeeMap extends Component {
 
                     <AttributionControl position="bottomright" prefix={false} />
 
-                    {results.data.map((dataItem, k) => {
+                    {this.state.dataMaps.map((dataItem, k) => {
                         let { coordinates, company, url, loc } = dataItem;
                         return (
                             <CircleMarker onClick={() => { window.open(url) }}
