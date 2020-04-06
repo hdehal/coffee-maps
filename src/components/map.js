@@ -32,7 +32,7 @@ Papa.parse(myDataset, {
             console.log(city);
             try {
                 let result = await provider.search({ query: city + ', CA, United States' })
-                    .then(result => console.log(result[0].y + ',' + result[0].x))
+                    .then(result => results.data[index].coordinates = [result[0].y, result[0].x]);
             }
             catch (e) {
                 console.log(e);
