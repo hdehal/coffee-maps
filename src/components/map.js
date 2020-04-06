@@ -13,15 +13,6 @@ const provider = new BingProvider({
     },
 });
 
-// Convert "City, State" or "ZIP" to lat/long coordinates using leaflet-geosearch plugin 
-provider
-    .search({ query: 'Los Angeles' })
-    .then(function (result) {
-        // Result should look like this for Los Angeles:
-        // 34.0536909,-118.2427666
-        // console.log(result[0].y + ',' + result[0].x);
-    });
-
 Papa.parse(myDataset, {
     download: true,
     header: true,
@@ -32,7 +23,7 @@ Papa.parse(myDataset, {
             console.log(city);
             try {
                 let result = await provider.search({ query: city + ', CA, United States' })
-                    .then(result => console.log(result[0].y + ',' + result[0].x))
+                    .then(result => results.data[index].coordinates = [result[0].y, result[0].x]);
             }
             catch (e) {
                 console.log(e);
@@ -40,18 +31,12 @@ Papa.parse(myDataset, {
         }
 
         console.log(results.data);
-        // console.log(results.data[0].city);
+
     }
 });
 
-/* Adapted from https://github.com/afzalsayed96/bubbles-map by Afzal Sayed  */
-/* Map tiles proudly from Stamen Design in San Francisco https://stamen.com/maps/ */
-/* Additional help from http://leaflet-extras.github.io/leaflet-providers/preview/ */
-
 class CoffeeMap extends Component {
-
     render() {
-
         return (
             <div>
                 <Map
@@ -68,7 +53,6 @@ class CoffeeMap extends Component {
                     /> */}
 
                     <AttributionControl position="bottomright" prefix={false} />
-
 
                 </Map>
             </div>
