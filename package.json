@@ -9,10 +9,12 @@
     "@testing-library/user-event": "^7.1.2",
     "leaflet": "^1.6.0",
     "leaflet-geosearch": "^2.7.0",
+    "leaflet.markercluster": "^1.4.1",
     "papaparse": "^5.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-leaflet": "^2.6.3",
+    "react-leaflet-markercluster": "^2.0.0",
     "react-scripts": "3.4.1"
   },
   "scripts": {

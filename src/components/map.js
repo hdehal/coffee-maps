@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Map, CircleMarker, TileLayer, Tooltip, AttributionControl } from "react-leaflet";
 import { BingProvider } from 'leaflet-geosearch';
-import "leaflet/dist/leaflet.css";
-// import data from "./mapData"
 import Papa from 'papaparse';
 import myDataset from '../coffee_roasters_list.csv';
+import { Map, CircleMarker, TileLayer, Tooltip, AttributionControl } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import MarkerClusterGroup from 'react-leaflet-markercluster';
+import "react-leaflet-markercluster/dist/styles.min.css";
 
 // Provider for leaflet-geosearch plugin
 const provider = new BingProvider({
@@ -13,31 +14,54 @@ const provider = new BingProvider({
     },
 });
 
-Papa.parse(myDataset, {
-    download: true,
-    header: true,
-    delimiter: ',',
-    complete: async function (results) {
-        for (let index in results.data) {
-            let city = results.data[index].city;
-            console.log(city);
-            try {
-                let result = await provider.search({ query: city + ', CA, United States' })
-                    .then(result => results.data[index].coordinates = [result[0].y, result[0].x]);
+class CoffeeMap extends Component {
+
+    // Initial state
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            dataMaps: []
+        }
+    }
+
+    componentDidMount() {
+        var self = this;
+        Papa.parse(myDataset, {
+            download: true,
+            header: true,
+            delimiter: ',',
+            complete: async function (papaResult) {
+                for (let index in papaResult.data) {
+                    let city = papaResult.data[index].city;
+                    console.log(city);
+
+                    try {
+                        let providerResult = await provider.search({ query: city + ', CA, United States' });
+                        papaResult.data[index].coordinates = [providerResult[0].y, providerResult[0].x];
+                        self.setState({ dataMaps: papaResult.data });
+                    }
+                    catch (e) {
+                        console.log(e);
+                    }
+                }
+
+                console.log(papaResult.data);
             }
-            catch (e) {
-                console.log(e);
-            }
+        });
+    }
+
+    render() {
+
+        /* console.log(this.state.dataMaps)
+        console.log(this.state.dataMaps[1]) */
+
+        if (this.state.dataMaps === null) {
+            return null; //Or some other replacement component or markup
         }
 
-        console.log(results.data);
-
-    }
-});
-
-class CoffeeMap extends Component {
-    render() {
         return (
+
             <div>
                 <Map
                     style={{ height: "480px", width: "100%", opacity: "0.9" }}
@@ -53,6 +77,27 @@ class CoffeeMap extends Component {
                     /> */}
 
                     <AttributionControl position="bottomright" prefix={false} />
+
+                    <MarkerClusterGroup
+                        spiderfyDistanceMultiplier={1}
+                        showCoverageOnHover={false}
+                        maxClusterRadius={35}
+                    >
+                        {this.state.dataMaps.filter(x => { return x.coordinates; }).map((dataItem, k) => {
+                            let { city, coordinates, roaster, url } = dataItem;
+                            return (
+                                <CircleMarker onClick={() => { window.open(url) }}
+                                    key={k}
+                                    center={[coordinates[0], coordinates[1]]}
+                                    position={[coordinates[0], coordinates[1]]}
+                                >
+                                    <Tooltip direction="right" offset={[-8, -2]} opacity={1}>
+                                        <span><a href={url}>{roaster}</a></span>
+                                        <span>{city}</span>
+                                    </Tooltip>
+                                </CircleMarker>);
+                        })}
+                    </MarkerClusterGroup>
 
                 </Map>
             </div>
