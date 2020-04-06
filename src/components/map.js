@@ -26,12 +26,12 @@ Papa.parse(myDataset, {
     download: true,
     header: true,
     delimiter: ',',
-    complete: function (results) {
+    complete: async function (results) {
         for (let index in results.data) {
             let city = results.data[index].city;
             console.log(city);
             try {
-                let result = provider.search({ query: city + ', CA, United States' })
+                let result = await provider.search({ query: city + ', CA, United States' })
                     .then(result => console.log(result[0].y + ',' + result[0].x))
             }
             catch (e) {
