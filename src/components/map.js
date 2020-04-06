@@ -54,6 +54,21 @@ class CoffeeMap extends Component {
 
                     <AttributionControl position="bottomright" prefix={false} />
 
+                    {results.data.map((dataItem, k) => {
+                        let { coordinates, company, url, loc } = dataItem;
+                        return (
+                            <CircleMarker onClick={() => { window.open(url) }}
+                                key={k}
+                                center={[coordinates[0], coordinates[1]]}
+                                position={[coordinates[0], coordinates[1]]}
+                            >
+                                <Tooltip direction="right" offset={[-8, -2]} opacity={1}>
+                                    <span><a href={url}>{company}</a></span>
+                                    <span>{loc}</span>
+                                </Tooltip>
+                            </CircleMarker>);
+                    })}
+
                 </Map>
             </div>
         );
