@@ -83,7 +83,7 @@ class CoffeeMap extends Component {
                         showCoverageOnHover={false}
                         maxClusterRadius={35}
                     >
-                        {this.state.dataMaps.map((dataItem, k) => {
+                        {this.state.dataMaps.filter(x => { return x.coordinates; }).map((dataItem, k) => {
                             let { city, coordinates, roaster, url } = dataItem;
                             return (
                                 <CircleMarker onClick={() => { window.open(url) }}
