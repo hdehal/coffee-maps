@@ -10,9 +10,6 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
@@ -27,19 +24,16 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Grid container spacing={2}>
+      <Grid container spacing={2} >
         <Grid item xs={12} sm={8}>
           <Paper className={classes.paper}>
             <CoffeeMap />
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={3}>
           <Paper className={classes.paper}>
             <CoffeeTable />
           </Paper>
-        </Grid>
-        <Grid item xs>
-          <Paper className={classes.paper}>Footer</Paper>
         </Grid>
       </Grid>
     </div>

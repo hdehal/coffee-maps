@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 body {
-  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  background-color: #cfd9df;
 }
 #header {
 }
@@ -81,4 +81,9 @@ body, h1, h2, h3, h4, p {
   border: 0px !important;
   background-color: transparent !important;
   opacity: 0.9 !important;
+}
+
+/* Table Styling */
+.MuiTableCell-head {
+  font-weight: bold !important;
 }
