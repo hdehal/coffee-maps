@@ -2,10 +2,19 @@ import React, { Component } from 'react';
 import { BingProvider } from 'leaflet-geosearch';
 import Papa from 'papaparse';
 import myDataset from '../coffee_roasters_list.csv';
-import { Map, CircleMarker, TileLayer, Tooltip, AttributionControl } from "react-leaflet";
+import { Map, Marker, TileLayer, Tooltip, AttributionControl } from "react-leaflet";
+import L from 'leaflet';
 import "leaflet/dist/leaflet.css";
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import "react-leaflet-markercluster/dist/styles.min.css";
+
+// Leaflet custom marker
+const myIcon = new L.Icon({
+    // Coffee bean attribution -- Thanks! https://commons.wikimedia.org/wiki/File:Coffee_bean_symbol.svg
+    iconUrl: require('../bean.svg'),
+    iconSize: new L.Point(25, 25),
+    className: 'leaflet-bean-icon'
+});
 
 // Provider for leaflet-geosearch plugin
 const provider = new BingProvider({
@@ -34,7 +43,7 @@ class CoffeeMap extends Component {
             complete: async function (papaResult) {
                 for (let index in papaResult.data) {
                     let city = papaResult.data[index].city;
-                    console.log(city);
+                    // console.log(city);
 
                     try {
                         let providerResult = await provider.search({ query: city + ', CA, United States' });
@@ -46,22 +55,13 @@ class CoffeeMap extends Component {
                     }
                 }
 
-                console.log(papaResult.data);
+                // console.log(papaResult.data);
             }
         });
     }
 
     render() {
-
-        /* console.log(this.state.dataMaps)
-        console.log(this.state.dataMaps[1]) */
-
-        if (this.state.dataMaps === null) {
-            return null; //Or some other replacement component or markup
-        }
-
         return (
-
             <div>
                 <Map
                     style={{ height: "480px", width: "100%", opacity: "0.9" }}
@@ -86,7 +86,8 @@ class CoffeeMap extends Component {
                         {this.state.dataMaps.filter(x => { return x.coordinates; }).map((dataItem, k) => {
                             let { city, coordinates, roaster, url } = dataItem;
                             return (
-                                <CircleMarker onClick={() => { window.open(url) }}
+                                <Marker onClick={() => { window.open(url) }}
+                                    icon={myIcon}
                                     key={k}
                                     center={[coordinates[0], coordinates[1]]}
                                     position={[coordinates[0], coordinates[1]]}
@@ -95,10 +96,9 @@ class CoffeeMap extends Component {
                                         <span><a href={url}>{roaster}</a></span>
                                         <span>{city}</span>
                                     </Tooltip>
-                                </CircleMarker>);
+                                </Marker>);
                         })}
                     </MarkerClusterGroup>
-
                 </Map>
             </div>
         );
