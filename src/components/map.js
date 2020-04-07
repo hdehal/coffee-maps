@@ -94,7 +94,7 @@ class CoffeeMap extends Component {
                                 >
                                     <Tooltip direction="right" offset={[-8, -2]} opacity={1}>
                                         <span><a href={url}>{roaster}</a></span>
-                                        <span>{city}</span>
+                                        <span>{city}, CA</span>
                                     </Tooltip>
                                 </Marker>);
                         })}
