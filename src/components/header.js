@@ -1,10 +1,33 @@
 import React from 'react';
-import logo from '../bean.svg';
+import { makeStyles } from '@material-ui/core/styles';
+import Twemoji from './twemoji';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+    title: {
+        flexGrow: 1,
+    },
+}));
 
 function Header() {
+
+    const classes = useStyles();
     return (
         <div id="header">
-            <h4><img src={logo} alt="Coffee Bean" />Coffee Roasters <span>in the San Francisco Bay Area</span></h4>
+            <AppBar position="static">
+                <Toolbar>
+                    <Typography variant="h6" className={classes.title}>
+                        <Twemoji emoji="☕" /> Bay Area Coffee Roasters
+                    </Typography>
+                    <Button variant="contained" size="small">Add Roaster</Button>
+                </Toolbar>
+            </AppBar>
         </div>
     );
 }

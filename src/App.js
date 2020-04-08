@@ -11,7 +11,6 @@ import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
@@ -24,13 +23,13 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Grid container spacing={2} >
+      <Grid container spacing={2}>
         <Grid item xs={12} sm={8}>
           <Paper className={classes.paper}>
             <CoffeeMap />
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12} sm={4}>
           <Paper className={classes.paper}>
             <CoffeeTable />
           </Paper>

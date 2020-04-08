@@ -36,17 +36,13 @@ class CoffeeTable extends Component {
 
   render() {
 
-    function createData(name, calories, fat, carbs, protein) {
-      return { name, calories, fat, carbs, protein };
-    }
-
     return (
       <TableContainer component={Paper}>
-        <Table size="small" aria-label="a dense table">
+        <Table size="small" stickyHeader aria-label="Coffee Table">
           <TableHead>
             <TableRow>
-              <TableCell>City</TableCell>
-              <TableCell align="right">Roaster</TableCell>
+              <TableCell>Roaster</TableCell>
+              <TableCell align="right">City</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
