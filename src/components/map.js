@@ -65,9 +65,9 @@ class CoffeeMap extends Component {
             <div>
                 <Map
                     style={{ height: "89vh", width: "100%" }}
-                    zoom={8}
+                    zoom={9}
                     maxZoom={20}
-                    center={[37.5970132, -122.5310677]}
+                    center={[37.6, -122.5]}
                     attributionControl={false}>
                     <TileLayer url="https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png"
                         attribution="&copy; <a href='https://stadiamaps.com/'>Stadia Maps</a>, &copy; and <a href='http://openstreetmap.org'>OpenStreetMap</a> contributors"
