@@ -6,10 +6,10 @@ body {
 a:hover {
   text-decoration: none;
 }
-#header svg {
+#header .emoji {
+  height: 1.5em;
   vertical-align: middle;
-  max-height: 1.4em !important;
-  margin: 0em 0.25em 0em 0em;
+  padding-right: 0.25em;
 }
 #header span {
   color: #555;
@@ -28,7 +28,7 @@ body, h1, h2, h3, h4, p {
   width: 100vw !important;
 }
 .MuiPaper-root.makeStyles-paper-1.MuiPaper-elevation1.MuiPaper-rounded {
-  height: 89.5vh;
+  height: 89vh;
   overflow-y: scroll;
 }
 
