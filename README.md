@@ -1,68 +1,68 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Screenshot](https://github.com/hdehal/coffee-maps/raw/master/public/app_screenshot.png)
 
-## Available Scripts
+## Get Started:
+1. Clone the repo:
+```
+git clone https://github.com/hdehal/coffee-maps.git
+```
+2. Create an API key in Google Console:
+https://developers.google.com/sheets/api/guides/authorizing#APIKey
 
-In the project directory, you can run:
+3. Create an API key for Bing Maps (for geocoding/nominatim):
+https://www.bingmapsportal.com
 
-### `yarn start`
+4. Create a ".env" file in your root (coffee-maps) folder with:
+```
+REACT_APP_BING_MAPS_API_KEY=<YOUR-API-KEY-HERE>
+REACT_APP_GOOGLE_SHEETS_API_KEY=<YOUR-API-KEY-HERE>
+```
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## General File Structure:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+```
+src/
+└── components/
+    ├── header.js
+    ├── map.js
+    ├── table.js
+    └── twemoji.js
+```
 
-### `yarn test`
+## How to Deploy on GitHub Pages using Yarn and gh-pages:
+Assuming you have an existing working GitHub repository, and your local code is checked-in.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Run `yarn add -D gh-pages` to install gh-pages as a dev dependency
 
-### `yarn build`
+2. Create CNAME file in the public/ folder)
+```
+Your CNAME file should look like this:
+mywebsite.com
+```
+3. Edit your `package.json` and add the following:
+If it's a GitHub repo:
+```
+"homepage": "https://<your_github_username>.github.io/st",
+```
+OR if it's a custom TLD/domain:
+```
+  "homepage": "https://yourwebsite.com",
+```
+AND add your build and deploy scripts -- this will deploy your `build` folder to a new branch it will automatically create for you called `gh-pages`:
+```
+"scripts": {
+    "deploy": "yarn run build && gh-pages -d build",
+}
+```
+4. Add basename to your your routing:
+<BrowserRouter basename="/st">
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+5. Commit your changes to your normal repo
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+6. Create your username.github.io repo at https://pages.github.com
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+7. Configuring a custom domain for your GitHub Pages site:
+https://help.github.com/en/github/working-with-github-pages/managing-a-custom-domain-for-your-github-pages-site
 
-### `yarn eject`
+8. Run `yarn deploy` -- it will prompt you for your Github username/password and automatically create and push your build files to a new branch `gh-pages` on your remote origin.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+9. You should shortly see your changes on either https://yourwebsite.com or https://your_github_username.github.io
