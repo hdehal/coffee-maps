@@ -3,15 +3,20 @@
 body {
   background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
 }
+a {
+  color: #3f51b5;
+}
 a:hover {
   text-decoration: none;
+}
+a:visited {
+  color: #000;
 }
 #header .emoji {
   height: 1.5em;
   vertical-align: middle;
   padding-right: 0.25em;
 }
-
 body, h1, h2, h3, h4, p {
   font-family: 'Roboto', sans-serif;
 }
