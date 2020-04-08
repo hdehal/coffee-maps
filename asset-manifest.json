@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/coffee-maps/static/css/main.7e6cc15b.chunk.css",
+    "main.css": "/coffee-maps/static/css/main.916213a8.chunk.css",
     "main.js": "/coffee-maps/static/js/main.a0c4995b.chunk.js",
     "main.js.map": "/coffee-maps/static/js/main.a0c4995b.chunk.js.map",
     "runtime-main.js": "/coffee-maps/static/js/runtime-main.3e301a2c.js",
@@ -9,10 +9,10 @@
     "static/js/2.2b31845f.chunk.js": "/coffee-maps/static/js/2.2b31845f.chunk.js",
     "static/js/2.2b31845f.chunk.js.map": "/coffee-maps/static/js/2.2b31845f.chunk.js.map",
     "index.html": "/coffee-maps/index.html",
-    "precache-manifest.cbf973260027818ab51714f84153c7c2.js": "/coffee-maps/precache-manifest.cbf973260027818ab51714f84153c7c2.js",
+    "precache-manifest.629a64524b66bd06005ca1f1338b0d0f.js": "/coffee-maps/precache-manifest.629a64524b66bd06005ca1f1338b0d0f.js",
     "service-worker.js": "/coffee-maps/service-worker.js",
     "static/css/2.fb66d78c.chunk.css.map": "/coffee-maps/static/css/2.fb66d78c.chunk.css.map",
-    "static/css/main.7e6cc15b.chunk.css.map": "/coffee-maps/static/css/main.7e6cc15b.chunk.css.map",
+    "static/css/main.916213a8.chunk.css.map": "/coffee-maps/static/css/main.916213a8.chunk.css.map",
     "static/js/2.2b31845f.chunk.js.LICENSE.txt": "/coffee-maps/static/js/2.2b31845f.chunk.js.LICENSE.txt",
     "static/media/bean.svg": "/coffee-maps/static/media/bean.5c039dac.svg"
   },
@@ -20,7 +20,7 @@
     "static/js/runtime-main.3e301a2c.js",
     "static/css/2.fb66d78c.chunk.css",
     "static/js/2.2b31845f.chunk.js",
-    "static/css/main.7e6cc15b.chunk.css",
+    "static/css/main.916213a8.chunk.css",
     "static/js/main.a0c4995b.chunk.js"
   ]
 }
