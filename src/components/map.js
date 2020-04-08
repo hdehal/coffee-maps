@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { BingProvider } from 'leaflet-geosearch';
-import Papa from 'papaparse';
-import myDataset from '../coffee_roasters_list.csv';
 import { Map, Marker, TileLayer, Tooltip, AttributionControl } from "react-leaflet";
 import L from 'leaflet';
 import "leaflet/dist/leaflet.css";
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import "react-leaflet-markercluster/dist/styles.min.css";
+
+const API = 'https://sheets.googleapis.com/v4/spreadsheets/1u7jiqY1qM0jYWugn1dFiW3plQrvWysJqm8xXhO35zuU/values:batchGet?ranges=Sheet1&majorDimension=ROWS&key=' + process.env.REACT_APP_GOOGLE_SHEETS_API_KEY;
 
 // Leaflet custom marker
 const myIcon = new L.Icon({
@@ -35,29 +35,37 @@ class CoffeeMap extends Component {
     }
 
     componentDidMount() {
-        var self = this;
-        Papa.parse(myDataset, {
-            download: true,
-            header: true,
-            delimiter: ',',
-            complete: async function (papaResult) {
-                for (let index in papaResult.data) {
-                    let city = papaResult.data[index].city;
+        // Google Sheets API
+        // Based on the helpful demo by https://github.com/kpennell/sheetsdemo
+        fetch(API)
+            .then(response => response.json())
+            .then(async (data) => {
+                let batchRowValues = data.valueRanges[0].values;
+                const rows = [];
+                for (let i = 1; i < batchRowValues.length; i++) {
+                    let rowObject = {};
+                    for (let j = 0; j < batchRowValues[i].length; j++) {
+                        rowObject[batchRowValues[0][j]] = batchRowValues[i][j];
+                    }
+                    rows.push(rowObject);
+                }
+
+                for (let index in rows) {
+                    let city = rows[index].city;
                     // console.log(city);
 
                     try {
                         let providerResult = await provider.search({ query: city + ', CA, United States' });
-                        papaResult.data[index].coordinates = [providerResult[0].y, providerResult[0].x];
-                        self.setState({ dataMaps: papaResult.data });
+                        rows[index].coordinates = [providerResult[0].y, providerResult[0].x];
+                        this.setState({ dataMaps: rows });
                     }
                     catch (e) {
                         console.log(e);
                     }
                 }
 
-                // console.log(papaResult.data);
-            }
-        });
+                // console.log(this.state.dataMaps);
+            });
     }
 
     render() {

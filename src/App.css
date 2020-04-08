@@ -25,6 +25,10 @@ body, h1, h2, h3, h4, p {
 .MuiTableCell-head {
   font-weight: bold !important;
 }
+.MuiTableCell-root {
+  min-width: 125px;
+}
+
 /* Map Layout Styling */
 #map {
   height: 100% !important;
@@ -94,5 +98,11 @@ body, h1, h2, h3, h4, p {
 .leaflet-bean-icon {
   border: 0px !important;
   background-color: transparent !important;
+}
+.leaflet-marker-icon span {
+  font-weight: 500;
+  color: #000 !important;
+}
+.leaflet-marker-icon {
   opacity: 0.9 !important;
 }

@@ -25,7 +25,14 @@ function Header() {
                     <Typography variant="h6" className={classes.title}>
                         <Twemoji emoji="☕" /> Bay Area Coffee Roasters
                     </Typography>
-                    <Button variant="contained" size="small">Add Roaster</Button>
+                    <Button
+                        variant="contained"
+                        size="small"
+                        onClick={() => {
+                            window.open('https://docs.google.com/spreadsheets/d/1u7jiqY1qM0jYWugn1dFiW3plQrvWysJqm8xXhO35zuU/edit?usp=sharing', "_blank");
+                        }}>
+                        Add Roaster
+                        </Button>
                 </Toolbar>
             </AppBar>
         </div>

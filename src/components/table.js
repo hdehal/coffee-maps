@@ -6,8 +6,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Papa from 'papaparse';
-import myDataset from '../coffee_roasters_list.csv';
+
+const API = 'https://sheets.googleapis.com/v4/spreadsheets/1u7jiqY1qM0jYWugn1dFiW3plQrvWysJqm8xXhO35zuU/values:batchGet?ranges=Sheet1&majorDimension=ROWS&key=' + process.env.REACT_APP_GOOGLE_SHEETS_API_KEY;
 
 class CoffeeTable extends Component {
 
@@ -21,20 +21,33 @@ class CoffeeTable extends Component {
   }
 
   componentDidMount() {
-    var self = this;
+    // Google Sheets API
+    // Based on the helpful demo by https://github.com/kpennell/sheetsdemo
+    fetch(API)
+      .then(response => response.json())
+      .then(data => {
+        let batchRowValues = data.valueRanges[0].values;
+        const rows = [];
 
-    Papa.parse(myDataset, {
-      download: true,
-      header: true,
-      delimiter: ',',
-      complete: function (results) {
-        console.log(results);
-        self.setState({ rows: results.data });
-      }
-    });
+        for (let i = 1; i < batchRowValues.length; i++) {
+          let rowObject = {};
+          for (let j = 0; j < batchRowValues[i].length; j++) {
+            rowObject[batchRowValues[0][j]] = batchRowValues[i][j];
+          }
+          rows.push(rowObject);
+        }
+
+        this.setState({ rows: rows });
+        // console.log(this.state.items);
+      });
+
   }
 
   render() {
+
+    if (this.state.rows.length === 0) {
+      return null;
+    }
 
     return (
       <TableContainer component={Paper}>
