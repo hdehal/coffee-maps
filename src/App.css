@@ -11,9 +11,7 @@ a:hover {
   vertical-align: middle;
   padding-right: 0.25em;
 }
-#header span {
-  color: #555;
-}
+
 body, h1, h2, h3, h4, p {
   font-family: 'Roboto', sans-serif;
 }
@@ -34,7 +32,7 @@ body, h1, h2, h3, h4, p {
 
 /* Leaflet styling */
 .leaflet-container a {
-  color: #663300 !important;
+  color: #8a4b38 !important;
 }
 .leaflet-tooltip span {
   display: block;
