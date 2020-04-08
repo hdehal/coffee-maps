@@ -25,6 +25,10 @@ body, h1, h2, h3, h4, p {
 .MuiTableCell-head {
   font-weight: bold !important;
 }
+.MuiTableCell-root {
+  min-width: 125px;
+}
+
 /* Map Layout Styling */
 #map {
   height: 100% !important;
