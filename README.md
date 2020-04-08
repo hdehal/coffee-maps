@@ -1,6 +1,16 @@
 ![Screenshot](https://github.com/hdehal/coffee-maps/raw/master/public/app_screenshot.png)
 
-## Get Started:
+## Support Local Business!
+View the list here: [TBD](https://pages.github.com/)
+
+The San Francisco Bay Area has an exceedingly diverse coffee scene. Please consider purchasing from local coffee roasters to help support independently-run small businesses:
+
+> The first wave of American coffee culture was probably the 19th-century surge that put Folgers on every table, and the second was the proliferation, starting in the 1960s at Peet's and moving smartly through the Starbucks grande decaf latte, of espresso drinks and regionally labeled coffee. We are now in the third wave of coffee connoisseurship, where beans are sourced from farms instead of countries, roasting is about bringing out rather than incinerating the unique characteristics of each bean, and the flavor is clean and hard and pure.[9]
+—Pulitzer Prize winning food critic Jonathan Gold (LA Weekly, March 2008) [Wikipedia](https://en.wikipedia.org/wiki/Third_wave_of_coffee#Use_of_the_term)
+
+If you see a coffee roaster missing from the list, feel free to contribute by adding to the Google Sheet (please request access), which will automatically update the map: [https://docs.google.com/spreadsheets/d/1u7jiqY1qM0jYWugn1dFiW3plQrvWysJqm8xXhO35zuU/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1u7jiqY1qM0jYWugn1dFiW3plQrvWysJqm8xXhO35zuU/edit?usp=sharing)
+
+## Get Started as a Developer:
 1. Clone the repo:
 ```
 git clone https://github.com/hdehal/coffee-maps.git
