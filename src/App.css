@@ -3,14 +3,11 @@
 body {
   background-color: #cfd9df;
 }
-#header {
-}
-#header img {
+#header svg {
   vertical-align: middle;
-  max-height: 1.4em;
+  max-height: 1.4em !important;
   margin: 0em 0.25em 0em 0em;
 }
-
 #header span {
   color: #555;
 }
@@ -49,13 +46,10 @@ body, h1, h2, h3, h4, p {
     to   { opacity: 1; }
 }
 /* react-leaflet-markercluster overrides for CircleMarker */
-
 .leaflet-marker-icon.marker-cluster.marker-cluster-small.leaflet-zoom-animated.leaflet-interactive {
   font-weight: bold !important;
   color: #000 !important;
 }
-
-
 .marker-cluster-small {
   background-color: rgb(102, 51, 0) !important;
 }
