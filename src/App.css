@@ -1,12 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+body {
+  background-color: #cfd9df;
+}
+#header {
+}
+#header img {
+  vertical-align: middle;
+  max-height: 1.4em;
+  margin: 0em 0.25em 0em 0em;
+}
+
+#header span {
+  color: #555;
+}
 body, h1, h2, h3, h4, p {
   font-family: 'Roboto', sans-serif;
 }
 
 /* Leaflet styling */
 .leaflet-container a {
-  color: #007bff !important;
+  color: #663300 !important;
 }
 .leaflet-tooltip span {
   display: block;
@@ -35,28 +49,41 @@ body, h1, h2, h3, h4, p {
     to   { opacity: 1; }
 }
 /* react-leaflet-markercluster overrides for CircleMarker */
+
+.leaflet-marker-icon.marker-cluster.marker-cluster-small.leaflet-zoom-animated.leaflet-interactive {
+  font-weight: bold !important;
+  color: #000 !important;
+}
+
+
 .marker-cluster-small {
-  background-color: rgba(51, 136, 255, 1) !important;
+  background-color: rgb(102, 51, 0) !important;
 }
 .marker-cluster-small div {
-  background-color: rgb(218, 233, 255) !important;
+  background-color: #dbccbd !important;
 }
 .marker-cluster-medium {
-  background-color: rgba(51, 136, 255, 1) !important;
+  background-color: rgb(102, 51, 0) !important;
 }
 .marker-cluster-medium div {
-  background-color: rgb(218, 233, 255) !important;
+  background-color: #dbccbd !important;
 }
 .marker-cluster-large {
-  background-color: rgba(51, 136, 255, 1) !important;}
+  background-color: rgb(102, 51, 0) !important;
+}
 .marker-cluster-large div {
-  background-color: rgb(218, 233, 255) !important;
+  background-color: #dbccbd !important;
 }
 .marker-cluster-small:hover, .marker-cluster-medium:hover, .marker-cluster-large:hover {
-  box-shadow: inset 0 0 0 25px #0056b3 !important;
+  box-shadow: inset 0 0 0 25px #381c00 !important;
 }
 .leaflet-bean-icon {
   border: 0px !important;
   background-color: transparent !important;
-  opacity: 0.8 !important;
+  opacity: 0.9 !important;
+}
+
+/* Table Styling */
+.MuiTableCell-head {
+  font-weight: bold !important;
 }
