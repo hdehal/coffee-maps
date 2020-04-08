@@ -38,7 +38,7 @@ class CoffeeTable extends Component {
 
     return (
       <TableContainer component={Paper}>
-        <Table size="small" aria-label="a dense table">
+        <Table size="small" stickyHeader aria-label="Coffee Table">
           <TableHead>
             <TableRow>
               <TableCell>Roaster</TableCell>

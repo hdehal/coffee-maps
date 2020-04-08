@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 body {
-  background-color: #cfd9df;
+  background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+}
+a:hover {
+  text-decoration: none;
 }
 #header svg {
   vertical-align: middle;
@@ -13,6 +16,20 @@ body {
 }
 body, h1, h2, h3, h4, p {
   font-family: 'Roboto', sans-serif;
+}
+
+/* Table Styling */
+.MuiTableCell-head {
+  font-weight: bold !important;
+}
+/* Map Layout Styling */
+#map {
+  height: 100% !important;
+  width: 100vw !important;
+}
+.MuiPaper-root.makeStyles-paper-1.MuiPaper-elevation1.MuiPaper-rounded {
+  height: 89.5vh;
+  overflow-y: scroll;
 }
 
 /* Leaflet styling */
@@ -75,9 +92,4 @@ body, h1, h2, h3, h4, p {
   border: 0px !important;
   background-color: transparent !important;
   opacity: 0.9 !important;
-}
-
-/* Table Styling */
-.MuiTableCell-head {
-  font-weight: bold !important;
 }

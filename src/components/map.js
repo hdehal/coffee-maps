@@ -64,7 +64,7 @@ class CoffeeMap extends Component {
         return (
             <div>
                 <Map
-                    style={{ height: "480px", width: "100%" }}
+                    style={{ height: "89.5vh", width: "100%" }}
                     zoom={8}
                     maxZoom={20}
                     center={[37.5970132, -122.5310677]}
