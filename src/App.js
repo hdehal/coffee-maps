@@ -28,11 +28,9 @@ class App extends Component {
     this.state = {
       dataMaps: []
     }
-
-    this.fetchMapsData = this.fetchMapsData.bind(this)
   }
 
-  fetchMapsData() {
+  componentDidMount() {
     // Google Sheets API
     // Based on the helpful demo by https://github.com/kpennell/sheetsdemo
     fetch(API)
@@ -66,10 +64,6 @@ class App extends Component {
       });
   }
 
-  componentDidMount() {
-    this.fetchMapsData();
-  }
-
   render() {
     return (
       <div className="App">
@@ -77,7 +71,7 @@ class App extends Component {
         <Grid container spacing={2}>
           <Grid item xs={12} sm={8}>
             <Paper>
-              <CoffeeMap dataMapsProp={this.fetchMapsData} />
+              <CoffeeMap dataMapsProp={this.state.dataMaps} />
             </Paper>
           </Grid>
           <Grid item xs={12} sm={4}>
