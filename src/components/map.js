@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import { BingProvider } from 'leaflet-geosearch';
 import { Map, Marker, TileLayer, Tooltip, AttributionControl } from "react-leaflet";
 import L from 'leaflet';
 import "leaflet/dist/leaflet.css";
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import "react-leaflet-markercluster/dist/styles.min.css";
-
-const API = 'https://sheets.googleapis.com/v4/spreadsheets/1u7jiqY1qM0jYWugn1dFiW3plQrvWysJqm8xXhO35zuU/values:batchGet?ranges=Sheet1&majorDimension=ROWS&key=' + process.env.REACT_APP_GOOGLE_SHEETS_API_KEY;
 
 // Leaflet custom marker
 const myIcon = new L.Icon({
@@ -14,13 +11,6 @@ const myIcon = new L.Icon({
     iconUrl: require('../bean.svg'),
     iconSize: new L.Point(25, 25),
     className: 'leaflet-bean-icon'
-});
-
-// Provider for leaflet-geosearch plugin
-const provider = new BingProvider({
-    params: {
-        key: process.env.REACT_APP_BING_MAPS_API_KEY
-    },
 });
 
 class CoffeeMap extends Component {
@@ -32,40 +22,6 @@ class CoffeeMap extends Component {
         this.state = {
             dataMaps: []
         }
-    }
-
-    componentDidMount() {
-        // Google Sheets API
-        // Based on the helpful demo by https://github.com/kpennell/sheetsdemo
-        fetch(API)
-            .then(response => response.json())
-            .then(async (data) => {
-                let batchRowValues = data.valueRanges[0].values;
-                const rows = [];
-                for (let i = 1; i < batchRowValues.length; i++) {
-                    let rowObject = {};
-                    for (let j = 0; j < batchRowValues[i].length; j++) {
-                        rowObject[batchRowValues[0][j]] = batchRowValues[i][j];
-                    }
-                    rows.push(rowObject);
-                }
-
-                for (let index in rows) {
-                    let city = rows[index].city;
-                    // console.log(city);
-
-                    try {
-                        let providerResult = await provider.search({ query: city + ', CA, United States' });
-                        rows[index].coordinates = [providerResult[0].y, providerResult[0].x];
-                        this.setState({ dataMaps: rows });
-                    }
-                    catch (e) {
-                        console.log(e);
-                    }
-                }
-
-                // console.log(this.state.dataMaps);
-            });
     }
 
     render() {
@@ -80,9 +36,6 @@ class CoffeeMap extends Component {
                     <TileLayer url="https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png"
                         attribution="&copy; <a href='https://stadiamaps.com/'>Stadia Maps</a>, &copy; and <a href='http://openstreetmap.org'>OpenStreetMap</a> contributors"
                     />
-                    {/* <TileLayer url="https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png"
-                        attribution="Map by <a href='https://wikimediafoundation.org/wiki/Maps_Terms_of_Use' target='_blank'>Wikimedia</a> | &copy; <a href='https://www.openstreetmap.org/copyright' target='_blank'>OpenStreetMap</a> contributors"
-                    /> */}
 
                     <AttributionControl position="bottomright" prefix={false} />
 
@@ -91,7 +44,7 @@ class CoffeeMap extends Component {
                         showCoverageOnHover={false}
                         maxClusterRadius={35}
                     >
-                        {this.state.dataMaps.filter(x => { return x.coordinates; }).map((dataItem, k) => {
+                        {this.props.dataMapsProp.filter(x => { return x.coordinates; }).map((dataItem, k) => {
                             let { city, coordinates, roaster, url } = dataItem;
                             return (
                                 <Marker onClick={() => { window.open(url) }}
