@@ -10,10 +10,10 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 // Google Sheets API -- PROD
-// const API = 'https://sheets.googleapis.com/v4/spreadsheets/1u7jiqY1qM0jYWugn1dFiW3plQrvWysJqm8xXhO35zuU/values:batchGet?ranges=Sheet1&majorDimension=ROWS&key=' + process.env.REACT_APP_GOOGLE_SHEETS_API_KEY;
+const API = 'https://sheets.googleapis.com/v4/spreadsheets/1u7jiqY1qM0jYWugn1dFiW3plQrvWysJqm8xXhO35zuU/values:batchGet?ranges=Sheet1&majorDimension=ROWS&key=' + process.env.REACT_APP_GOOGLE_SHEETS_API_KEY;
 
 // Google Sheets API -- DEV
-const API = 'https://sheets.googleapis.com/v4/spreadsheets/1jQI6PstbEArW_3xDnGgPJR6_37r_KjLoa765bOgMBhk/values:batchGet?ranges=Sheet1&majorDimension=ROWS&key=' + process.env.REACT_APP_GOOGLE_SHEETS_API_KEY;
+// const API = 'https://sheets.googleapis.com/v4/spreadsheets/1jQI6PstbEArW_3xDnGgPJR6_37r_KjLoa765bOgMBhk/values:batchGet?ranges=Sheet1&majorDimension=ROWS&key=' + process.env.REACT_APP_GOOGLE_SHEETS_API_KEY;
 
 // Provider for leaflet-geosearch plugin
 const provider = new BingProvider({
