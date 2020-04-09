@@ -15,7 +15,7 @@ const API = 'https://sheets.googleapis.com/v4/spreadsheets/1u7jiqY1qM0jYWugn1dFi
 // Provider for leaflet-geosearch plugin
 const provider = new BingProvider({
   params: {
-      key: process.env.REACT_APP_BING_MAPS_API_KEY
+    key: process.env.REACT_APP_BING_MAPS_API_KEY
   },
 });
 
@@ -29,10 +29,10 @@ class App extends Component {
       dataMaps: []
     }
 
-    // this.componentDidMount = this.componentDidMount.bind(this)
+    this.fetchMapsData = this.fetchMapsData.bind(this)
   }
 
-  componentDidMount() {
+  fetchMapsData() {
     // Google Sheets API
     // Based on the helpful demo by https://github.com/kpennell/sheetsdemo
     fetch(API)
@@ -66,6 +66,10 @@ class App extends Component {
       });
   }
 
+  componentDidMount() {
+    this.fetchMapsData();
+  }
+
   render() {
     return (
       <div className="App">
@@ -73,7 +77,7 @@ class App extends Component {
         <Grid container spacing={2}>
           <Grid item xs={12} sm={8}>
             <Paper>
-              <CoffeeMap dataMapsProp={this.dataMaps} />
+              <CoffeeMap dataMapsProp={this.fetchMapsData} />
             </Paper>
           </Grid>
           <Grid item xs={12} sm={4}>
