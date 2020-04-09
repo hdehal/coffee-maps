@@ -9,11 +9,6 @@ import Paper from '@material-ui/core/Paper';
 
 class CoffeeTable extends Component {
 
-  // Initial state
-  constructor(props) {
-    super(props);
-  }
-
   render() {
 
     return (
@@ -26,7 +21,7 @@ class CoffeeTable extends Component {
             </TableRow>
           </TableHead>
           <TableBody>
-          {this.props.dataMapsProp && this.props.dataMapsProp.map((row) => ( 
+            {this.props.dataMapsProp && this.props.dataMapsProp.map((row) => (
               <TableRow key={row.name}>
                 <TableCell component="th" scope="row">
                   <a href={row.url} target="_blank" rel="noopener noreferrer" >
