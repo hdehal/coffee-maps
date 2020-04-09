@@ -60,4 +60,4 @@ AND add your build and deploy scripts -- this will deploy your `build` folder to
 
 5. Run `yarn deploy` -- it will prompt you for your Github username/password and automatically create and push your build files to a new branch `gh-pages` on your remote origin.
 
-6. You should shortly see your changes on https://your_github_username.github.io
+6. You should shortly see your changes on https://your_github_username.github.io/your_repo
