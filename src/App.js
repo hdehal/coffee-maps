@@ -63,7 +63,8 @@ class App extends Component {
 
         try {
           let providerResult = await provider.search({ query: city + ', CA, United States' });
-          rows[index].Coordinates = [providerResult[0].y, providerResult[0].x];
+          rows[index].Coordinates = [providerResult[0].y, providerResult[0].x].toString(); // Convert obj to string
+          await rows[index].save(); // Save stringified rows to remote Google Sheet
           self.setState({ dataMaps: rows });
         }
         catch (e) {
