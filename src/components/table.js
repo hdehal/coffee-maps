@@ -22,13 +22,13 @@ class CoffeeTable extends Component {
           </TableHead>
           <TableBody>
             {this.props.dataMapsProp && this.props.dataMapsProp.map((row) => (
-              <TableRow key={row.name}>
+              <TableRow key={row.Roaster}>
                 <TableCell component="th" scope="row">
-                  <a href={row.url} target="_blank" rel="noopener noreferrer" >
-                    {row.roaster}
+                  <a href={row.URL} target="_blank" rel="noopener noreferrer" >
+                    {row.Roaster}
                   </a>
                 </TableCell>
-                <TableCell align="right">{row.city}, CA</TableCell>
+                <TableCell align="right">{row.City}, CA</TableCell>
               </TableRow>
             ))}
           </TableBody>

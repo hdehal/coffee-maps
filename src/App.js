@@ -58,12 +58,12 @@ class App extends Component {
       // console.log(rows);
 
       for (let index in rows) {
-        let city = rows[index].city;
+        let city = rows[index].City;
         // console.log(city);
 
         try {
           let providerResult = await provider.search({ query: city + ', CA, United States' });
-          rows[index].coordinates = [providerResult[0].y, providerResult[0].x];
+          rows[index].Coordinates = [providerResult[0].y, providerResult[0].x];
           self.setState({ dataMaps: rows });
         }
         catch (e) {
