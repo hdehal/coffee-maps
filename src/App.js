@@ -9,11 +9,13 @@ import CoffeeTable from './components/table';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
-// Google Sheets API -- PROD
-const API = 'https://sheets.googleapis.com/v4/spreadsheets/1u7jiqY1qM0jYWugn1dFiW3plQrvWysJqm8xXhO35zuU/values:batchGet?ranges=Sheet1&majorDimension=ROWS&key=' + process.env.REACT_APP_GOOGLE_SHEETS_API_KEY;
+const { GoogleSpreadsheet } = require('google-spreadsheet');
 
-// Google Sheets API -- DEV
-// const API = 'https://sheets.googleapis.com/v4/spreadsheets/1jQI6PstbEArW_3xDnGgPJR6_37r_KjLoa765bOgMBhk/values:batchGet?ranges=Sheet1&majorDimension=ROWS&key=' + process.env.REACT_APP_GOOGLE_SHEETS_API_KEY;
+// Google Sheets Document ID -- PROD
+// const doc = new GoogleSpreadsheet('1u7jiqY1qM0jYWugn1dFiW3plQrvWysJqm8xXhO35zuU');
+
+// Google Sheets Document ID -- DEV
+const doc = new GoogleSpreadsheet('1jQI6PstbEArW_3xDnGgPJR6_37r_KjLoa765bOgMBhk');
 
 // Provider for leaflet-geosearch plugin
 const provider = new BingProvider({
@@ -35,36 +37,41 @@ class App extends Component {
 
   componentDidMount() {
     // Google Sheets API
-    // Based on the helpful demo by https://github.com/kpennell/sheetsdemo
-    fetch(API)
-      .then(response => response.json())
-      .then(async (data) => {
-        let batchRowValues = data.valueRanges[0].values;
-        const rows = [];
-        for (let i = 1; i < batchRowValues.length; i++) {
-          let rowObject = {};
-          for (let j = 0; j < batchRowValues[i].length; j++) {
-            rowObject[batchRowValues[0][j]] = batchRowValues[i][j];
-          }
-          rows.push(rowObject);
-        }
+    // Based on https://github.com/theoephraim/node-google-spreadsheet
 
-        for (let index in rows) {
-          let city = rows[index].city;
-          // console.log(city);
+    var self = this;
 
-          try {
-            let providerResult = await provider.search({ query: city + ', CA, United States' });
-            rows[index].coordinates = [providerResult[0].y, providerResult[0].x];
-            this.setState({ dataMaps: rows });
-          }
-          catch (e) {
-            console.log(e);
-          }
-        }
-
-        // console.log(this.state.dataMaps);
+    (async function main() {
+      // use service account creds
+      await doc.useServiceAccountAuth({
+        client_email: process.env.REACT_APP_GOOGLE_SERVICE_ACCOUNT_EMAIL,
+        private_key: process.env.REACT_APP_GOOGLE_PRIVATE_KEY,
       });
+
+      await doc.loadInfo(); // loads document properties and worksheets
+      // console.log(doc.title);
+      // console.log(sheet.title);
+      // console.log(sheet.rowCount);
+
+      const sheet = doc.sheetsByIndex[0]; // or use doc.sheetsById[id]
+      const rows = await sheet.getRows(); // can pass in { limit, offset }
+      // console.log(rows);
+
+      for (let index in rows) {
+        let city = rows[index].city;
+        // console.log(city);
+
+        try {
+          let providerResult = await provider.search({ query: city + ', CA, United States' });
+          rows[index].coordinates = [providerResult[0].y, providerResult[0].x];
+          self.setState({ dataMaps: rows });
+        }
+        catch (e) {
+          console.log(e);
+        }
+      }
+
+    })();
   }
 
   render() {
