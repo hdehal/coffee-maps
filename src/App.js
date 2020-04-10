@@ -53,8 +53,9 @@ class App extends Component {
       const sheet = doc.sheetsByIndex[0];
       const rows = await sheet.getRows();
 
-      var readyToGo = rows.filter((x) => { return x.Coordinates; }).map((x) => { return { ...x, Coordinates: JSON.parse(x.Coordinates) }; });
-      self.setState({ dataMaps: readyToGo });
+      rows.forEach((x) => { if (x.Coordinates) { x.mapCoords = JSON.parse(x.Coordinates); } });
+
+      self.setState({ dataMaps: rows });
 
       var needsUpdates = rows.filter((x) => { return !x.Coordinates; });
 
@@ -66,15 +67,15 @@ class App extends Component {
             let providerResult = await provider.search({ query: city + ', CA, United States' });
             let latlon = [providerResult[0].y, providerResult[0].x];
             needsUpdates[index].Coordinates = JSON.stringify(latlon); // Convert obj to string
-            await needsUpdates[index].save(); // Save stringified rows to remote Google Sheet
-            readyToGo.push({ ...rows, Coordinates: latlon });
+            needsUpdates[index].mapCoords = latlon;
+            await needsUpdates[index].save(); // Save to remote Google Sheet
           }
           catch (e) {
             console.log(e);
           }
         }
 
-        self.setState({ dataMaps: readyToGo });
+        self.setState({ dataMaps: rows });
       }
 
     })();

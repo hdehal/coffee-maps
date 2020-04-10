@@ -45,13 +45,13 @@ class CoffeeMap extends Component {
                         maxClusterRadius={35}
                     >
                         {this.props.dataMapsProp.filter(x => { return x.Coordinates; }).map((dataItem, k) => {
-                            let { City, Coordinates, Roaster, URL } = dataItem;
+                            let { City, mapCoords, Roaster, URL } = dataItem;
                             return (
                                 <Marker onClick={() => { window.open(URL) }}
                                     icon={myIcon}
                                     key={k}
-                                    center={[Coordinates[0], Coordinates[1]]}
-                                    position={[Coordinates[0], Coordinates[1]]}
+                                    center={[mapCoords[0], mapCoords[1]]}
+                                    position={[mapCoords[0], mapCoords[1]]}
                                 >
                                     <Tooltip direction="right" offset={[-8, -2]} opacity={1}>
                                         <span><a href={URL}>{Roaster}</a></span>
