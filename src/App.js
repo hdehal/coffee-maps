@@ -42,34 +42,39 @@ class App extends Component {
     var self = this;
 
     (async function main() {
-      // use service account creds
+      // Use service account creds
       await doc.useServiceAccountAuth({
         client_email: process.env.REACT_APP_GOOGLE_SERVICE_ACCOUNT_EMAIL,
         private_key: process.env.REACT_APP_GOOGLE_PRIVATE_KEY,
       });
 
-      await doc.loadInfo(); // loads document properties and worksheets
-      // console.log(doc.title);
-      // console.log(sheet.title);
-      // console.log(sheet.rowCount);
+      await doc.loadInfo(); // Loads document properties and worksheets
 
-      const sheet = doc.sheetsByIndex[0]; // or use doc.sheetsById[id]
-      const rows = await sheet.getRows(); // can pass in { limit, offset }
-      // console.log(rows);
+      const sheet = doc.sheetsByIndex[0];
+      const rows = await sheet.getRows();
 
-      for (let index in rows) {
-        let city = rows[index].City;
-        // console.log(city);
+      var readyToGo = rows.filter((x) => { return x.Coordinates; }).map((x) => { return { ...x, Coordinates: JSON.parse(x.Coordinates) }; });
+      self.setState({ dataMaps: readyToGo });
 
-        try {
-          let providerResult = await provider.search({ query: city + ', CA, United States' });
-          rows[index].Coordinates = [providerResult[0].y, providerResult[0].x].toString(); // Convert obj to string
-          await rows[index].save(); // Save stringified rows to remote Google Sheet
-          self.setState({ dataMaps: rows });
+      var needsUpdates = rows.filter((x) => { return !x.Coordinates; });
+
+      if (needsUpdates && needsUpdates.length > 0) {
+        for (let index in needsUpdates) {
+          let city = needsUpdates[index].City;
+
+          try {
+            let providerResult = await provider.search({ query: city + ', CA, United States' });
+            let latlon = [providerResult[0].y, providerResult[0].x];
+            rows[index].Coordinates = JSON.stringify(latlon); // Convert obj to string
+            await rows[index].save(); // Save stringified rows to remote Google Sheet
+            readyToGo.push({ ...rows, Coordinates: latlon });
+          }
+          catch (e) {
+            console.log(e);
+          }
         }
-        catch (e) {
-          console.log(e);
-        }
+
+        self.setState({ dataMaps: readyToGo });
       }
 
     })();
