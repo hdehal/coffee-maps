@@ -65,8 +65,8 @@ class App extends Component {
           try {
             let providerResult = await provider.search({ query: city + ', CA, United States' });
             let latlon = [providerResult[0].y, providerResult[0].x];
-            rows[index].Coordinates = JSON.stringify(latlon); // Convert obj to string
-            await rows[index].save(); // Save stringified rows to remote Google Sheet
+            needsUpdates[index].Coordinates = JSON.stringify(latlon); // Convert obj to string
+            await needsUpdates[index].save(); // Save stringified rows to remote Google Sheet
             readyToGo.push({ ...rows, Coordinates: latlon });
           }
           catch (e) {
