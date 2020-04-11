@@ -12,10 +12,17 @@ a:hover {
 a:visited {
   color: #000;
 }
+#header #logo {
+  flex-grow: 1;
+}
 #header .emoji {
   height: 1.5em;
   vertical-align: middle;
   padding-right: 0.25em;
+}
+#header .TableCount {
+  padding: 1em;
+  font-size: 0.8125rem;
 }
 body, h1, h2, h3, h4, p {
   font-family: 'Roboto', sans-serif;
@@ -111,6 +118,9 @@ body, h1, h2, h3, h4, p {
       font-size: 0.9em;
     }
     .MuiButton-containedSizeSmall {
-      font-size: 0.7125rem;
+      font-size: 0.7125rem !important;
+  }
+  #header .TableCount {
+    display: none;
   }
 }
