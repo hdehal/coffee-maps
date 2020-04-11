@@ -36,7 +36,6 @@ body, h1, h2, h3, h4, p {
 }
 .MuiPaper-elevation1 {
   height: 89vh;
-  overflow-y: scroll;
 }
 
 /* Leaflet styling */
