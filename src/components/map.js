@@ -39,7 +39,7 @@ class CoffeeMap extends Component {
                     center={[37.69, -122.5]}
                     attributionControl={false}>
                     <TileLayer url="https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png"
-                        attribution="&copy; <a href='https://stadiamaps.com/'>Stadia Maps</a>, &copy; and <a href='http://openstreetmap.org'>OpenStreetMap</a> contributors"
+                        attribution="&copy; <a href='https://stadiamaps.com/'>Stadia Maps</a> | &copy; <a href='http://openstreetmap.org'>OpenStreetMap</a> contributors"
                     />
 
                     <AttributionControl position="bottomright" prefix={false} />
