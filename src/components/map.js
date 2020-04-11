@@ -8,7 +8,7 @@ import "react-leaflet-markercluster/dist/styles.min.css";
 // Leaflet custom marker
 const myIcon = new L.Icon({
     // Coffee bean attribution -- Thanks! https://commons.wikimedia.org/wiki/File:Coffee_bean_symbol.svg
-    iconUrl: require('../bean.svg'),
+    iconUrl: require('../images/bean.svg'),
     iconSize: new L.Point(25, 25),
     className: 'leaflet-bean-icon'
 });

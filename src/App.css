@@ -24,6 +24,15 @@ a:visited {
   padding: 1em;
   font-size: 0.8125rem;
 }
+#header .GitHub[type="button"] {
+  margin-left: 0.7125em;
+}
+#header .GitHub img {
+  height: 1.25em;
+}
+.GitHub.MuiIconButton-sizeSmall {
+  padding: 0px;
+}
 body, h1, h2, h3, h4, p {
   font-family: 'Roboto', sans-serif;
 }
@@ -114,13 +123,16 @@ body, h1, h2, h3, h4, p {
 
 /* Mobile responsive breakpoints */
 @media (max-width: 600px) {
+    #header .emoji {
+      height: 2em;
+    }
     #header h6 {
       font-size: 0.9em;
     }
     .MuiButton-containedSizeSmall {
       font-size: 0.7125rem !important;
-  }
-  #header .TableCount {
-    display: none;
-  }
+    }
+    #header .TableCount {
+      display: none;
+    }
 }
