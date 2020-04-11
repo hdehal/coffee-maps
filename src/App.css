@@ -12,10 +12,26 @@ a:hover {
 a:visited {
   color: #000;
 }
+#header #logo {
+  flex-grow: 1;
+}
 #header .emoji {
   height: 1.5em;
   vertical-align: middle;
   padding-right: 0.25em;
+}
+#header .TableCount {
+  padding: 1em;
+  font-size: 0.8125rem;
+}
+#header .GitHub[type="button"] {
+  margin-left: 0.7125em;
+}
+#header .GitHub img {
+  height: 1.25em;
+}
+.GitHub.MuiIconButton-sizeSmall {
+  padding: 0px;
 }
 body, h1, h2, h3, h4, p {
   font-family: 'Roboto', sans-serif;
@@ -31,12 +47,10 @@ body, h1, h2, h3, h4, p {
 
 /* Map Layout Styling */
 #map {
-  height: 100% !important;
   width: 100vw !important;
 }
 .MuiPaper-elevation1 {
   height: 89vh;
-  overflow-y: scroll;
 }
 
 /* Leaflet styling */
@@ -108,10 +122,29 @@ body, h1, h2, h3, h4, p {
 
 /* Mobile responsive breakpoints */
 @media (max-width: 600px) {
+    #header .emoji {
+      height: 2em;
+    }
     #header h6 {
       font-size: 0.9em;
     }
     .MuiButton-containedSizeSmall {
-      font-size: 0.7125rem;
-  }
+      font-size: 0.7125rem !important;
+    }
+    #header .TableCount {
+      display: none;
+    }
+    #header #RoasterButtonMobile {
+      display: none;
+    }
+    #CoffeeMap {
+      height: 42vh;
+    }
+    #CoffeeTable {
+      height: 58vh;
+    }
+    .leaflet-container {
+      height: 42vh !important;
+      overflow: hidden !important;
+    }
 }

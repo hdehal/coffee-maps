@@ -8,7 +8,7 @@ import "react-leaflet-markercluster/dist/styles.min.css";
 // Leaflet custom marker
 const myIcon = new L.Icon({
     // Coffee bean attribution -- Thanks! https://commons.wikimedia.org/wiki/File:Coffee_bean_symbol.svg
-    iconUrl: require('../bean.svg'),
+    iconUrl: require('../images/bean.svg'),
     iconSize: new L.Point(25, 25),
     className: 'leaflet-bean-icon'
 });
@@ -25,13 +25,18 @@ class CoffeeMap extends Component {
     }
 
     render() {
+
+        // Render map default zoom based on mobile breakpoint
+        const isMobile = window.innerWidth < 480;
+        const screensizeZoom = isMobile ? 7.25 : 8.5;
+
         return (
             <div>
                 <Map
                     style={{ height: "89vh", width: "100%" }}
-                    zoom={9}
+                    zoom={screensizeZoom}
                     maxZoom={20}
-                    center={[37.6, -122.5]}
+                    center={[37.69, -122.5]}
                     attributionControl={false}>
                     <TileLayer url="https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png"
                         attribution="&copy; <a href='https://stadiamaps.com/'>Stadia Maps</a>, &copy; and <a href='http://openstreetmap.org'>OpenStreetMap</a> contributors"

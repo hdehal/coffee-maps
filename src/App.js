@@ -31,7 +31,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      dataMaps: []
+      dataMaps: [],
+      rowCount: ''
     }
   }
 
@@ -52,6 +53,9 @@ class App extends Component {
 
       const sheet = doc.sheetsByIndex[0];
       const rows = await sheet.getRows();
+
+      // Total row count
+      self.setState({ rowCount: rows.length });
 
       rows.forEach((x) => { if (x.Coordinates) { x.mapCoords = JSON.parse(x.Coordinates); } });
 
@@ -84,15 +88,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header rowCountProp={this.state.rowCount} />
         <Grid container spacing={2}>
           <Grid item xs={12} sm={8}>
-            <Paper>
+            <Paper id="CoffeeMap">
               <CoffeeMap dataMapsProp={this.state.dataMaps} />
             </Paper>
           </Grid>
           <Grid item xs={12} sm={4}>
-            <Paper>
+            <Paper id="CoffeeTable">
               <CoffeeTable dataMapsProp={this.state.dataMaps} />
             </Paper>
           </Grid>

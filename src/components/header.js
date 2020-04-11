@@ -1,42 +1,50 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { Component } from 'react';
 import Twemoji from './twemoji';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import TableCount from './tableCount';
+import github_mark from '../images/github_mark.png';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-    title: {
-        flexGrow: 1,
-    },
-}));
+class Header extends Component {
 
-function Header() {
+    render() {
 
-    const classes = useStyles();
-    return (
-        <div id="header">
-            <AppBar position="static">
-                <Toolbar>
-                    <Typography variant="h6" className={classes.title}>
-                        <Twemoji emoji="☕" /> Bay Area Coffee Roasters
-                    </Typography>
-                    <Button
-                        variant="contained"
-                        size="small"
-                        onClick={() => {
-                            window.open('https://docs.google.com/spreadsheets/d/1u7jiqY1qM0jYWugn1dFiW3plQrvWysJqm8xXhO35zuU/edit?usp=sharing', "_blank");
-                        }}>
-                        Add Roaster
+        const { rowCountProp } = this.props;
+
+        return (
+            <div id="header">
+                <AppBar position="static">
+                    <Toolbar>
+                        <Typography variant="h6" id="logo">
+                            <Twemoji emoji="☕" /> Bay Area Coffee Roasters
+                        </Typography>
+                        <TableCount rowCountProp={rowCountProp} />
+                        <Button
+                            variant="contained"
+                            size="small"
+                            onClick={() => {
+                                window.open('https://docs.google.com/spreadsheets/d/1u7jiqY1qM0jYWugn1dFiW3plQrvWysJqm8xXhO35zuU/edit?usp=sharing', "_blank");
+                            }}>
+                            Add<span id="RoasterButtonMobile">&nbsp;Roaster</span>
                         </Button>
-                </Toolbar>
-            </AppBar>
-        </div>
-    );
+                        <IconButton
+                            className="GitHub"
+                            variant="outlined"
+                            color="link"
+                            size="small"
+                            onClick={() => {
+                                window.open('https://github.com/hdehal/coffee-maps', "_blank");
+                            }}>
+                            <img className="GitHub" src={github_mark} alt="Hosted on GitHub" />
+                        </IconButton>
+                    </Toolbar>
+                </AppBar>
+            </div>
+        );
+    }
 }
 
 export default Header;
