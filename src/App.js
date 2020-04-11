@@ -12,10 +12,10 @@ import Grid from '@material-ui/core/Grid';
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 
 // Google Sheets Document ID -- PROD
-// const doc = new GoogleSpreadsheet('1u7jiqY1qM0jYWugn1dFiW3plQrvWysJqm8xXhO35zuU');
+const doc = new GoogleSpreadsheet('1u7jiqY1qM0jYWugn1dFiW3plQrvWysJqm8xXhO35zuU');
 
 // Google Sheets Document ID -- DEV
-const doc = new GoogleSpreadsheet('1jQI6PstbEArW_3xDnGgPJR6_37r_KjLoa765bOgMBhk');
+// const doc = new GoogleSpreadsheet('1jQI6PstbEArW_3xDnGgPJR6_37r_KjLoa765bOgMBhk');
 
 // Provider for leaflet-geosearch plugin
 const provider = new BingProvider({
