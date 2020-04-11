@@ -17,19 +17,15 @@ If you see a coffee roaster missing from the list, feel free to contribute by ad
 git clone https://github.com/hdehal/coffee-maps.git
 ```
 
-2. Create a "Service Account Key" and enable API access to Google Sheets:
+2. Create a "Service Account Key": https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys
 
-https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys
+3. Enable API access to Google Sheets: https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the
 
-https://developers.google.com/sheets/api/quickstart/js#step_1_turn_on_the
+4. Share your Google Sheet with your "Service Account Key" address (that you created above) as write/edit
 
-3. Share your Google Sheet with your "Service Account Key" address (that you created above) as write/edit
+5. Create an API key for Bing Maps (for geocoding/nominatim -- not using Google here since their service requires a credit card on file): https://www.bingmapsportal.com
 
-4. Create an API key for Bing Maps (for geocoding/nominatim -- not using Google here since their service requires a credit card on file):
-
-https://www.bingmapsportal.com
-
-5. Create a ".env" file in your root (coffee-maps) folder with:
+6. Create a ".env" file in your root (coffee-maps) folder with:
 ```
 REACT_APP_BING_MAPS_API_KEY=<YOUR-API-KEY-HERE>
 REACT_APP_GOOGLE_SERVICE_ACCOUNT_EMAIL=<YOUR-API-KEY-HERE>
