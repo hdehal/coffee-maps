@@ -44,18 +44,18 @@ class CoffeeMap extends Component {
                         showCoverageOnHover={false}
                         maxClusterRadius={35}
                     >
-                        {this.props.dataMapsProp.filter(x => { return x.coordinates; }).map((dataItem, k) => {
-                            let { city, coordinates, roaster, url } = dataItem;
+                        {this.props.dataMapsProp.filter(x => { return x.Coordinates; }).map((dataItem, k) => {
+                            let { City, mapCoords, Roaster, URL } = dataItem;
                             return (
-                                <Marker onClick={() => { window.open(url) }}
+                                <Marker onClick={() => { window.open(URL) }}
                                     icon={myIcon}
                                     key={k}
-                                    center={[coordinates[0], coordinates[1]]}
-                                    position={[coordinates[0], coordinates[1]]}
+                                    center={[mapCoords[0], mapCoords[1]]}
+                                    position={[mapCoords[0], mapCoords[1]]}
                                 >
                                     <Tooltip direction="right" offset={[-8, -2]} opacity={1}>
-                                        <span><a href={url}>{roaster}</a></span>
-                                        <span>{city}, CA</span>
+                                        <span><a href={URL}>{Roaster}</a></span>
+                                        <span>{City}, CA</span>
                                     </Tooltip>
                                 </Marker>);
                         })}
