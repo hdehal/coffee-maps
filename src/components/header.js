@@ -28,7 +28,7 @@ class Header extends Component {
                             onClick={() => {
                                 window.open('https://docs.google.com/spreadsheets/d/1u7jiqY1qM0jYWugn1dFiW3plQrvWysJqm8xXhO35zuU/edit?usp=sharing', "_blank");
                             }}>
-                            Add Roaster
+                            Add<span id="RoasterButtonMobile">&nbsp;Roaster</span>
                         </Button>
                         <IconButton
                             className="GitHub"

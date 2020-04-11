@@ -47,7 +47,6 @@ body, h1, h2, h3, h4, p {
 
 /* Map Layout Styling */
 #map {
-  height: 100% !important;
   width: 100vw !important;
 }
 .MuiPaper-elevation1 {
@@ -134,5 +133,18 @@ body, h1, h2, h3, h4, p {
     }
     #header .TableCount {
       display: none;
+    }
+    #header #RoasterButtonMobile {
+      display: none;
+    }
+    #CoffeeMap {
+      height: 42vh;
+    }
+    #CoffeeTable {
+      height: 58vh;
+    }
+    .leaflet-container {
+      height: 42vh !important;
+      overflow: hidden !important;
     }
 }

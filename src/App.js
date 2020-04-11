@@ -91,12 +91,12 @@ class App extends Component {
         <Header rowCountProp={this.state.rowCount} />
         <Grid container spacing={2}>
           <Grid item xs={12} sm={8}>
-            <Paper>
+            <Paper id="CoffeeMap">
               <CoffeeMap dataMapsProp={this.state.dataMaps} />
             </Paper>
           </Grid>
           <Grid item xs={12} sm={4}>
-            <Paper>
+            <Paper id="CoffeeTable">
               <CoffeeTable dataMapsProp={this.state.dataMaps} />
             </Paper>
           </Grid>
