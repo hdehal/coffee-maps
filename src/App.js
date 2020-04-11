@@ -4,10 +4,19 @@ import { BingProvider } from 'leaflet-geosearch';
 import Header from './components/header';
 import CoffeeMap from './components/map.js';
 import CoffeeTable from './components/table';
+import ReactGA from 'react-ga';
 
 // Material-UI
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+
+// Google Analytics
+function initializeReactGA() {
+  ReactGA.initialize('UA-159568942-2');
+  ReactGA.pageview(window.location.pathname + window.location.search);
+}
+
+initializeReactGA()
 
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 
