@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "384956e781f47c2212e69b1ad59d6e16",
+    "revision": "571bc4cb5a1a16c8b06306e6728a71f9",
     "url": "/coffee-maps/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/coffee-maps/static/css/2.fb66d78c.chunk.css"
   },
   {
-    "revision": "60221e4d91df66c868d8",
-    "url": "/coffee-maps/static/css/main.2b00892d.chunk.css"
+    "revision": "4e580278fd5e61f4ef4e",
+    "url": "/coffee-maps/static/css/main.49154717.chunk.css"
   },
   {
     "revision": "680d659ae881f4be3cd5",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/coffee-maps/static/js/2.f94c97c4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "60221e4d91df66c868d8",
-    "url": "/coffee-maps/static/js/main.b87cc553.chunk.js"
+    "revision": "4e580278fd5e61f4ef4e",
+    "url": "/coffee-maps/static/js/main.aa4a1059.chunk.js"
   },
   {
     "revision": "d604ffab6399dad9c30c",
