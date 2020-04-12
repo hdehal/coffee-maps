@@ -33,7 +33,6 @@ class Header extends Component {
                         <IconButton
                             className="GitHub"
                             variant="outlined"
-                            color="link"
                             size="small"
                             onClick={() => {
                                 window.open('https://github.com/hdehal/coffee-maps', "_blank");
