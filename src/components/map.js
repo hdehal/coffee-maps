@@ -39,10 +39,13 @@ class CoffeeMap extends Component {
                     center={[37.69, -122.5]}
                     attributionControl={false}>
                     <TileLayer url="https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png"
-                        attribution="&copy; <a href='https://stadiamaps.com/'>Stadia Maps</a> | &copy; <a href='http://openstreetmap.org'>OpenStreetMap</a> contributors"
+                        attribution="&copy; <a href='https://stadiamaps.com/' target='_blank'>Stadia Maps</a> | &copy; <a href='http://openstreetmap.org' target='_blank'>OpenStreetMap</a> contributors"
                     />
 
-                    <AttributionControl position="bottomright" prefix={false} />
+                    <AttributionControl
+                        position="bottomleft"
+                        prefix={false}
+                    />
 
                     <MarkerClusterGroup
                         spiderfyDistanceMultiplier={1}
@@ -52,13 +55,17 @@ class CoffeeMap extends Component {
                         {this.props.dataMapsProp.filter(x => { return x.Coordinates; }).map((dataItem, k) => {
                             let { City, mapCoords, Roaster, URL } = dataItem;
                             return (
-                                <Marker onClick={() => { window.open(URL) }}
+                                <Marker
+                                    onClick={() => { window.open(URL) }}
                                     icon={myIcon}
                                     key={k}
                                     center={[mapCoords[0], mapCoords[1]]}
                                     position={[mapCoords[0], mapCoords[1]]}
                                 >
-                                    <Tooltip direction="right" offset={[-8, -2]} opacity={1}>
+                                    <Tooltip
+                                        direction="auto"
+                                        offset={[-10, 0]}
+                                        opacity={1}>
                                         <span><a href={URL}>{Roaster}</a></span>
                                         <span>{City}, CA</span>
                                     </Tooltip>
