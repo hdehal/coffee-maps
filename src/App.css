@@ -52,6 +52,15 @@ body, h1, h2, h3, h4, p {
 .MuiPaper-elevation1 {
   height: 89vh;
 }
+.MuiPaper-elevation4 {
+  box-shadow: none !important;
+}
+.MuiPaper-rounded {
+  border-radius: 0px 0px 4px 4px !important;
+}
+.MuiAppBar-root {
+  border-radius: 4px 4px 0px 0px;
+}
 
 /* Leaflet styling */
 .leaflet-container a {
@@ -127,6 +136,9 @@ body, h1, h2, h3, h4, p {
     }
     #header h6 {
       font-size: 0.9em;
+    }
+    .MuiPaper-rounded {
+      border-radius: 4px !important;
     }
     .MuiButton-containedSizeSmall {
       font-size: 0.7125rem !important;
