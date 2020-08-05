@@ -22,9 +22,9 @@ class CoffeeTable extends Component {
           </TableHead>
           <TableBody>
             {this.props.dataMapsProp && this.props.dataMapsProp.map((row) => (
-              <TableRow key={row.Roaster}>
+              <TableRow onClick={()=> window.open(row.URL, "_blank")} key={row.Roaster} hover>
                 <TableCell component="th" scope="row">
-                  <a href={row.URL} target="_blank" rel="noopener noreferrer" >
+                  <a href={row.URL} target="_blank" rel="noopener noreferrer">
                     {row.Roaster}
                   </a>
                 </TableCell>
