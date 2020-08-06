@@ -9,6 +9,17 @@ import Paper from '@material-ui/core/Paper';
 
 class CoffeeTable extends Component {
 
+  constructor(props) {
+    super(props);
+    this.newTab = this.newTab.bind(this);
+  }
+
+  // Prevent onClick event bubbling in nested components from opening multiple new tabs
+  newTab(e, url) {
+    e.preventDefault();
+    window.open(url);
+  }
+
   render() {
 
     return (
@@ -22,7 +33,7 @@ class CoffeeTable extends Component {
           </TableHead>
           <TableBody>
             {this.props.dataMapsProp && this.props.dataMapsProp.map((row) => (
-              <TableRow onClick={()=> window.open(row.URL, "_blank")} key={row.Roaster} hover>
+              <TableRow onClick={e => this.newTab(e, row.URL, "_blank")} key={row.Roaster} hover>
                 <TableCell component="th" scope="row">
                   <a href={row.URL} target="_blank" rel="noopener noreferrer">
                     {row.Roaster}
