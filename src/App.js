@@ -41,6 +41,7 @@ class App extends Component {
 
     this.state = {
       dataMaps: [],
+      dataHeader: [{label:"roaster", dir:"asc"}, {label:"city", dir:"asc"}],
       rowCount: ''
     }
   }
@@ -106,7 +107,7 @@ class App extends Component {
           </Grid>
           <Grid item xs={12} sm={4}>
             <Paper id="CoffeeTable">
-              <CoffeeTable dataMapsProp={this.state.dataMaps} />
+              <CoffeeTable dataMapsProp={this.state.dataMaps} dataHeaderProp={this.state.dataHeader} />
             </Paper>
           </Grid>
         </Grid>

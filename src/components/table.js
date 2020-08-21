@@ -27,8 +27,9 @@ class CoffeeTable extends Component {
         <Table size="small" stickyHeader aria-label="Coffee Table">
           <TableHead>
             <TableRow>
-              <TableCell>Roaster</TableCell>
-              <TableCell align="right">City</TableCell>
+              {this.props.dataHeaderProp && this.props.dataHeaderProp.map((val) => (
+                <TableCell>{val.label}</TableCell>
+              ))}
             </TableRow>
           </TableHead>
           <TableBody>
