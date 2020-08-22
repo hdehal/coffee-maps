@@ -5,6 +5,7 @@ import Header from './components/header';
 import CoffeeMap from './components/map.js';
 import CoffeeTable from './components/table';
 import ReactGA from 'react-ga';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 // Material-UI
 import Paper from '@material-ui/core/Paper';
@@ -40,8 +41,9 @@ class App extends Component {
     super(props);
 
     this.state = {
+      isLoading: true,
       dataMaps: [],
-      dataHeader: [{label:"roaster", dir:"asc"}, {label:"city", dir:"asc"}],
+      dataHeader: [{ label: "roaster", dir: "asc" }, { label: "city", dir: "asc" }],
       rowCount: ''
     }
   }
@@ -92,6 +94,9 @@ class App extends Component {
         self.setState({ dataMaps: rows });
       }
 
+      // Loading message 
+      self.setState({ isLoading: false })
+
     })();
   }
 
@@ -107,7 +112,10 @@ class App extends Component {
           </Grid>
           <Grid item xs={12} sm={4}>
             <Paper id="CoffeeTable">
-              <CoffeeTable dataMapsProp={this.state.dataMaps} dataHeaderProp={this.state.dataHeader} />
+              {this.state.isLoading
+                ? <CircularProgress id="loading" />
+                : <CoffeeTable dataMapsProp={this.state.dataMaps} dataHeaderProp={this.state.dataHeader} />
+              }
             </Paper>
           </Grid>
         </Grid>
