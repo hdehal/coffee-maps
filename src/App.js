@@ -43,7 +43,7 @@ class App extends Component {
     this.state = {
       isLoading: true,
       dataMaps: [],
-      dataHeader: [{ label: "roaster", dir: "asc" }, { label: "city", dir: "asc" }],
+      dataHeader: [{ label: "Roaster" }, { label: "City" }],
       rowCount: ''
     }
   }
