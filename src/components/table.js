@@ -5,6 +5,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Paper from '@material-ui/core/Paper';
 
 class CoffeeTable extends Component {
@@ -20,11 +21,13 @@ class CoffeeTable extends Component {
     window.open(url);
   }
 
+  // Move props to state so table can sort on state
   state = {
     data: [...this.props.dataMapsProp],
-    order: "asc"
+    order: "desc"
   }
 
+  // Table sorting
   sort(column) {
     const sortedList = [...this.props.dataMapsProp];
     const newOrder = this.state.order === "asc" ? "desc" : "asc";
@@ -34,7 +37,7 @@ class CoffeeTable extends Component {
         .toLowerCase()
         .localeCompare((v2[column] ?? "").toLowerCase());
     };
-    if (newOrder === "asc") {
+    if (newOrder === "desc") {
       sortedList.sort((a, b) => sortValue(a, b));
     } else {
       sortedList.sort((a, b) => sortValue(b, a));
@@ -50,7 +53,15 @@ class CoffeeTable extends Component {
           <TableHead>
             <TableRow>
               {this.props.dataHeaderProp && this.props.dataHeaderProp.map((val) => (
-                <TableCell onClick={() => this.sort(val.label)}>{val.label}</TableCell>
+                <TableCell>
+                  <TableSortLabel
+                    // Who says UX isn't fun?
+                    // https://ux.stackexchange.com/questions/37564/use-up-or-down-arrow-to-represent-sort-ascending-at-table-header
+                    direction={this.state.order === "desc" ? "asc" : "desc"}
+                    onClick={() => this.sort(val.label)}>
+                    {val.label}
+                  </TableSortLabel>
+                </TableCell>
               ))}
             </TableRow>
           </TableHead>
