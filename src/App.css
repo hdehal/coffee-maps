@@ -50,6 +50,13 @@ body, h1, h2, h3, h4, p {
 
 #CoffeeTable {
   cursor: pointer;
+  display: flex;
+}
+
+#loading {
+  align-self: center;
+  justify-content: space-around;
+  margin: 0 auto;
 }
 
 .MuiTableCell-head {
