@@ -20,6 +20,28 @@ class CoffeeTable extends Component {
     window.open(url);
   }
 
+  state = {
+    data: [...this.props.dataMapsProp],
+    order: "asc"
+  }
+
+  sort(column) {
+    const sortedList = [...this.props.dataMapsProp];
+    const newOrder = this.state.order === "asc" ? "desc" : "asc";
+    const sortValue = (v1, v2) => {
+      if (column === "city") return v1.id - v2.id;
+      return (v1[column] ?? "")
+        .toLowerCase()
+        .localeCompare((v2[column] ?? "").toLowerCase());
+    };
+    if (newOrder === "asc") {
+      sortedList.sort((a, b) => sortValue(a, b));
+    } else {
+      sortedList.sort((a, b) => sortValue(b, a));
+    }
+    this.setState({ data: sortedList, order: newOrder, column: column });
+  }
+
   render() {
 
     return (
@@ -28,12 +50,12 @@ class CoffeeTable extends Component {
           <TableHead>
             <TableRow>
               {this.props.dataHeaderProp && this.props.dataHeaderProp.map((val) => (
-                <TableCell>{val.label}</TableCell>
+                <TableCell onClick={() => this.sort(val.label)}>{val.label}</TableCell>
               ))}
             </TableRow>
           </TableHead>
           <TableBody>
-            {this.props.dataMapsProp && this.props.dataMapsProp.map((row) => (
+            {this.state.data.map((row, index) => (
               <TableRow onClick={e => this.newTab(e, row.URL, "_blank")} key={row.Roaster} hover>
                 <TableCell component="th" scope="row">
                   <a href={row.URL} target="_blank" rel="noopener noreferrer">
