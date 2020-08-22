@@ -53,12 +53,11 @@ class CoffeeTable extends Component {
           <TableHead>
             <TableRow>
               {this.props.dataHeaderProp && this.props.dataHeaderProp.map((val) => (
-                <TableCell>
+                <TableCell onClick={() => this.sort(val.label)}>
                   <TableSortLabel
                     // Who says UX isn't fun?
                     // https://ux.stackexchange.com/questions/37564/use-up-or-down-arrow-to-represent-sort-ascending-at-table-header
-                    direction={this.state.order === "desc" ? "asc" : "desc"}
-                    onClick={() => this.sort(val.label)}>
+                    direction={this.state.order === "desc" ? "asc" : "desc"}>
                     {val.label}
                   </TableSortLabel>
                 </TableCell>
