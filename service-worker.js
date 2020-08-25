@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/coffee-maps/precache-manifest.2017e409fe901fe0c767ba5c2149091f.js"
+  "/coffee-maps/precache-manifest.d9433b1f417ce8a30880305fdf3d486c.js"
 );
 
 self.addEventListener('message', (event) => {
