@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7bb6fa059bdd67c752c9688291118623",
+    "revision": "1e41270a7694827225b81063de3ad5af",
     "url": "/coffee-maps/index.html"
   },
   {
