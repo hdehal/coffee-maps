@@ -11,6 +11,10 @@ a:hover {
   text-decoration: none;
 }
 
+header a {
+  text-decoration: none;
+}
+
 a:visited {
   color: #000;
 }
