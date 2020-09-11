@@ -106,14 +106,17 @@ class App extends Component {
         <Header rowCountProp={this.state.rowCount} />
         <Grid container spacing={2}>
           <Grid item xs={12} sm={8}>
-            <Paper id="CoffeeMap">
-              <CoffeeMap dataMapsProp={this.state.dataMaps} />
+            <Paper id="CoffeeMap" className="fadeIn">
+              {this.state.isLoading
+                ? <div className="flexLoading"><div className="loading">Loading...</div></div>
+                : <CoffeeMap dataMapsProp={this.state.dataMaps} />
+              }
             </Paper>
           </Grid>
           <Grid item xs={12} sm={4}>
             <Paper id="CoffeeTable">
               {this.state.isLoading
-                ? <CircularProgress id="loading" />
+                ? <div className="flexLoading"><div className="loading"><CircularProgress /></div></div>
                 : <CoffeeTable dataMapsProp={this.state.dataMaps} dataHeaderProp={this.state.dataHeader} />
               }
             </Paper>

@@ -22,23 +22,21 @@ class Header extends Component {
                             <Twemoji emoji="☕" /> Bay Area Coffee Roasters
                         </Typography>
                         <TableCount rowCountProp={rowCountProp} />
-                        <Button
-                            variant="contained"
-                            size="small"
-                            onClick={() => {
-                                window.open('https://docs.google.com/spreadsheets/d/1u7jiqY1qM0jYWugn1dFiW3plQrvWysJqm8xXhO35zuU/edit?usp=sharing', "_blank");
-                            }}>
-                            Add<span id="RoasterButtonMobile">&nbsp;Roaster</span>
-                        </Button>
-                        <IconButton
-                            className="GitHub"
-                            variant="outlined"
-                            size="small"
-                            onClick={() => {
-                                window.open('https://github.com/hdehal/coffee-maps', "_blank");
-                            }}>
-                            <img className="GitHub" src={github_mark} alt="Hosted on GitHub" />
-                        </IconButton>
+                        <a href="https://docs.google.com/spreadsheets/d/1u7jiqY1qM0jYWugn1dFiW3plQrvWysJqm8xXhO35zuU/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+                            <Button
+                                variant="contained"
+                                size="small">
+                                Add<span id="RoasterButtonMobile">&nbsp;Roaster</span>
+                            </Button>
+                        </a>
+                        <a href="https://github.com/hdehal/coffee-maps" target="_blank" rel="noopener noreferrer">
+                            <IconButton
+                                className="GitHub"
+                                variant="outlined"
+                                size="small">
+                                <img className="GitHub" src={github_mark} alt="Hosted on GitHub" />
+                            </IconButton>
+                        </a>
                     </Toolbar>
                 </AppBar>
             </div>

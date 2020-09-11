@@ -11,6 +11,10 @@ a:hover {
   text-decoration: none;
 }
 
+header a {
+  text-decoration: none;
+}
+
 a:visited {
   color: #000;
 }
@@ -53,10 +57,17 @@ body, h1, h2, h3, h4, p {
   display: flex;
 }
 
-#loading {
-  align-self: center;
-  justify-content: space-around;
+.flexLoading {
+  display: flex;
+  height: 100%;
   margin: 0 auto;
+}
+
+.loading {
+  align-self: center;
+  margin: 0 auto;
+  font-weight: bold;
+  color: #3f51b5;
 }
 
 .MuiTableCell-head {
@@ -79,6 +90,14 @@ body, h1, h2, h3, h4, p {
 
 #map {
   width: 100vw !important;
+}
+
+#CoffeeMap {
+  animation: fadeIn ease 2s;
+  -webkit-animation: fadeIn ease 2s;
+  -moz-animation: fadeIn ease 2s;
+  -o-animation: fadeIn ease 2s;
+  -ms-animation: fadeIn ease 2s;
 }
 
 .MuiPaper-elevation1 {
@@ -195,5 +214,52 @@ body, h1, h2, h3, h4, p {
   .leaflet-container {
     height: 42vh !important;
     overflow: hidden !important;
+  }
+}
+
+/* fadeIn Animation */
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
