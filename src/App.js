@@ -108,7 +108,7 @@ class App extends Component {
           <Grid item xs={12} sm={8}>
             <Paper id="CoffeeMap" className="fadeIn">
               {this.state.isLoading
-                ? <div className="flexLoading"><div className="loading">Loading...</div></div>
+                ? <div className="flexLoading"><div className="loading">Brewing...</div></div>
                 : <CoffeeMap dataMapsProp={this.state.dataMaps} />
               }
             </Paper>
