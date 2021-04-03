@@ -36,6 +36,12 @@ REACT_APP_GOOGLE_SERVICE_ACCOUNT_EMAIL=<YOUR-API-KEY-HERE>
 REACT_APP_GOOGLE_PRIVATE_KEY=<YOUR-API-KEY-HERE>
 ```
 
+7. Install and run:
+```
+yarn install
+yarn start
+```
+
 ### General File Structure:
 ```
 src/
