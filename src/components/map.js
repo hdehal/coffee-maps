@@ -4,13 +4,14 @@ import L from 'leaflet';
 import "leaflet/dist/leaflet.css";
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import "react-leaflet-markercluster/dist/styles.min.css";
+import coffeeBean from '../images/bean.svg'
 
 // Leaflet custom marker
 const myIcon = new L.Icon({
     // Coffee bean attribution -- Thanks! https://commons.wikimedia.org/wiki/File:Coffee_bean_symbol.svg
-    iconUrl: require('../images/bean.svg'),
+    iconUrl: coffeeBean,
     iconSize: new L.Point(25, 25),
-    className: 'leaflet-bean-icon'
+    className: 'leaflet-bean-icon',
 });
 
 class CoffeeMap extends Component {
@@ -56,7 +57,9 @@ class CoffeeMap extends Component {
                             let { City, mapCoords, Roaster, URL } = dataItem;
                             return (
                                 <Marker
-                                    onClick={() => { window.open(URL) }}
+                                    eventHandlers={{
+                                        click: (e) => { window.open(URL) }
+                                    }}
                                     icon={myIcon}
                                     key={k}
                                     center={[mapCoords[0], mapCoords[1]]}
@@ -64,7 +67,7 @@ class CoffeeMap extends Component {
                                 >
                                     <Tooltip
                                         direction="auto"
-                                        offset={[-10, 0]}
+                                        offset={[15, 0]}
                                         opacity={1}>
                                         <span><a href={URL}>{Roaster}</a></span>
                                         <span>{City}, CA</span>
