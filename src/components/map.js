@@ -57,7 +57,9 @@ class CoffeeMap extends Component {
                             let { City, mapCoords, Roaster, URL } = dataItem;
                             return (
                                 <Marker
-                                    onClick={() => { window.open(URL) }}
+                                    eventHandlers={{
+                                        click: (e) => { window.open(URL) }
+                                    }}
                                     icon={myIcon}
                                     key={k}
                                     center={[mapCoords[0], mapCoords[1]]}
@@ -65,7 +67,7 @@ class CoffeeMap extends Component {
                                 >
                                     <Tooltip
                                         direction="auto"
-                                        offset={[-10, 0]}
+                                        offset={[15, 0]}
                                         opacity={1}>
                                         <span><a href={URL}>{Roaster}</a></span>
                                         <span>{City}, CA</span>
