@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Map, Marker, TileLayer, Tooltip, AttributionControl } from "react-leaflet";
+import { MapContainer, Marker, TileLayer, Tooltip, AttributionControl } from "react-leaflet";
 import L from 'leaflet';
 import "leaflet/dist/leaflet.css";
 import MarkerClusterGroup from 'react-leaflet-markercluster';
@@ -32,7 +32,7 @@ class CoffeeMap extends Component {
 
         return (
             <div>
-                <Map
+                <MapContainer
                     style={{ height: "89vh", width: "100%" }}
                     zoom={screensizeZoom}
                     maxZoom={20}
@@ -72,7 +72,7 @@ class CoffeeMap extends Component {
                                 </Marker>);
                         })}
                     </MarkerClusterGroup>
-                </Map>
+                </MapContainer>
             </div>
         );
     }
